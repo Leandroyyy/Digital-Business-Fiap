@@ -2,38 +2,50 @@ package br.com.fiap.loja;
 
 import java.math.BigDecimal;
 
+import br.com.fiap.loja.situacao.Aberto;
+import br.com.fiap.loja.situacao.Situacao;
+
 public class Pedido {
 	
 	private BigDecimal valor;
 	private int totalDeItens;
-	private String situacao;
+	private Situacao situacao;
 	
 	public Pedido(BigDecimal valor) {
 		super();
 		this.valor = valor;
 		this.totalDeItens = 1;
-		this.situacao = "ABERTO";
+		this.situacao = new Aberto();
 	}
 	
 	public Pedido(BigDecimal valor, int totalDeItens) {
 		super();
 		this.valor = valor;
 		this.totalDeItens = totalDeItens;
+		this.situacao = new Aberto();
 	}
 	
 	public void abrirChamado() {
-		if (situacao == "ABERTO") {
-			System.out.println("Abrir chamado para FINANCEIRO");
-		}else if(situacao == "PAGO"){
-			System.out.println("Abrir chamado para LOGISTICA");
-		}else if(situacao == "ENTREGUE"){
-			System.out.println("Abrir chamado para POS-VENDA");
-		}else if(situacao == "CANCELADO"){
-			System.out.println("Abrir chamado para COMERCIAL");
-		}
+		situacao.abrirChamado();
 	}
 	
-	public void setSituacao(String situacao) {
+	public void pagar() {
+		situacao.pagar(this);
+	}
+
+	public void entregar() {
+		situacao.entregar(this);
+	}
+
+	public void cancelar() {
+		situacao.cancelar(this);
+	}
+
+	public void reabir() {
+		situacao.reabir(this);
+	}
+
+	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
 	}
 
