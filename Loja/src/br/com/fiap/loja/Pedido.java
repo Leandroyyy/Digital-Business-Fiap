@@ -4,18 +4,21 @@ import java.math.BigDecimal;
 
 import br.com.fiap.loja.situacao.Aberto;
 import br.com.fiap.loja.situacao.Situacao;
+import br.com.fiap.loja.situacao.SituacaoHandler;
 
 public class Pedido {
 	
 	private BigDecimal valor;
 	private int totalDeItens;
 	private Situacao situacao;
+	private SituacaoHandler handler;
 	
 	public Pedido(BigDecimal valor) {
 		super();
 		this.valor = valor;
 		this.totalDeItens = 1;
 		this.situacao = new Aberto();
+		this.handler = new SituacaoHandler();
 	}
 	
 	public Pedido(BigDecimal valor, int totalDeItens) {
@@ -23,6 +26,7 @@ public class Pedido {
 		this.valor = valor;
 		this.totalDeItens = totalDeItens;
 		this.situacao = new Aberto();
+		this.handler = new SituacaoHandler();
 	}
 	
 	public void abrirChamado() {
@@ -46,6 +50,7 @@ public class Pedido {
 	}
 
 	public void setSituacao(Situacao situacao) {
+		getHandler().notificar(this);
 		this.situacao = situacao;
 	}
 
@@ -55,6 +60,14 @@ public class Pedido {
 
 	public BigDecimal getValor() {
 		return valor;
+	}
+
+	public Situacao getSituacao() {
+		return this.situacao;
+	}
+
+	public SituacaoHandler getHandler() {
+		return handler;
 	}
 	
 }
