@@ -7,7 +7,8 @@ public class EmailListener implements SituacaoListener {
 	@Override
 	public void update(Pedido pedido) {
 		System.out.println("Mandando e-mail para o pedido " + pedido 
-				+ " na situacao " + pedido.getSituacao());		
+				+ " na situacao " + pedido.getSituacao() +
+				"com valor de " + pedido.getValor());		
 	}
 
 }

@@ -6,7 +6,8 @@ public class LogListener implements SituacaoListener {
 
 	@Override
 	public void update(Pedido pedido) {
-		System.out.println("LOG: " + pedido + " mudou a situação");
+		System.out.println("LOG: " + pedido + " mudou a situação "+
+				"e o valor dele é " + pedido.getValor());
 	}
 
 }

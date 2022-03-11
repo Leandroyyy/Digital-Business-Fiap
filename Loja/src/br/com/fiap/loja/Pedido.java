@@ -19,6 +19,10 @@ public class Pedido {
 		this.totalDeItens = 1;
 		this.situacao = new Aberto();
 		this.handler = new SituacaoHandler();
+		
+		PedidoFacade.criarProduto();
+		
+
 	}
 	
 	public Pedido(BigDecimal valor, int totalDeItens) {
@@ -27,6 +31,8 @@ public class Pedido {
 		this.totalDeItens = totalDeItens;
 		this.situacao = new Aberto();
 		this.handler = new SituacaoHandler();
+		
+		PedidoFacade.criarProduto();
 	}
 	
 	public void abrirChamado() {
@@ -59,6 +65,11 @@ public class Pedido {
 	}
 
 	public BigDecimal getValor() {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return valor;
 	}
 
