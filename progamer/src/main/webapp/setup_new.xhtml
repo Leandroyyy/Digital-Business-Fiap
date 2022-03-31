@@ -9,7 +9,7 @@
 
 <body style="background-color: #eee">
 
-	<!-- Menu -->
+
 	<div class="card">
 		<h:form>
 			<p:tabMenu activeIndex="#{param.i}">
@@ -26,31 +26,35 @@
 		</h:form>
 	</div>
 
-	<!-- Form -->
 
-	<p:card style="width: 25em; margin:1em auto; ">
-		<f:facet name="title">New Setup</f:facet>
-		<div class="ui-fluid">
-			<div class="p-field">
-				<label for="name">Name</label>
-				<p:inputText id="name" type="text" value="#{setupBean.setup.name}" />
-			</div>
-			<div class="p-field">
-				<label for="description">Description</label>
-				<p:inputTextarea id="description" value="#{setupBean.setup.description}"  />
-			</div>
-			<div class="p-field">
-				<label for="price">Price</label>
-				<p:inputNumber id="input2" symbol="R$ " decimalSeparator=","
-					thousandSeparator="." value="#{setupBean.setup.price}"/>
-			</div>
-		</div>
+	<h:form>
 
-		<f:facet name="footer">
-			<p:commandButton icon="pi pi-check" value="Save" />
-			<p:commandButton icon="pi pi-times" value="Cancel"
-				styleClass="ui-button-secondary" style="margin-left: .5em" />
-		</f:facet>
-	</p:card>
+		<p:card style="width: 25em; margin:1em auto; ">
+			<f:facet name="title">New Setup</f:facet>
+			<div class="ui-fluid">
+				<div class="p-field">
+					<label for="name">Name</label>
+					<p:inputText id="name" type="text" value="#{setupBean.setup.name}" />
+				</div>
+				<div class="p-field">
+					<label for="description">Description</label>
+					<p:inputTextarea id="description"
+						value="#{setupBean.setup.description}" />
+				</div>
+				<div class="p-field">
+					<label for="price">Price</label>
+					<p:inputNumber id="input2" symbol="R$ " decimalSeparator=","
+						thousandSeparator="." value="#{setupBean.setup.price}" />
+				</div>
+			</div>
+
+			<f:facet name="footer">
+				<p:commandButton icon="pi pi-check" value="Save"
+					action="#{setupBean.save()}" />
+				<p:commandButton icon="pi pi-times" value="Cancel"
+					styleClass="ui-button-secondary" style="margin-left: .5em" />
+			</f:facet>
+		</p:card>
+	</h:form>
 </body>
 </html>
