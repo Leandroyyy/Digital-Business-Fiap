@@ -14,7 +14,7 @@
 		</p:messages>
 
 		<!-- FORM -->
-		<h:form>
+		<h:form enctype="multipart/form-data">
 			<p:card style="width: 25em; margin: 1em auto">
 				<f:facet name="title">New Setup</f:facet>
 				<div class="ui-fluid">
@@ -55,7 +55,7 @@
 					
 					<div class="p-field">
 						<label for="image">Image File:</label>
-						<p:fileUpload id="image" mode="simple" skinSimple="true"/>
+						<p:fileUpload value="#{setupBean.image}" id="image" mode="simple" skinSimple="true"/>
 					</div>
 					
 				</div>
