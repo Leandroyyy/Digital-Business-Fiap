@@ -1,5 +1,8 @@
 package br.com.fiap.bean;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -25,9 +28,13 @@ public class SetupBean {
 		list = this.list();
 	}
 	
-	public String save() {
+	public String save() throws IOException {
 		System.out.println(this.setup);
 		System.out.println(image.getFileName());
+		
+		FileOutputStream out = new FileOutputStream("C:\\images\\" + image.getFileName());
+		out.write(image.getContent());
+		out.close();
 		
 		new SetupDao().create(setup);
 
